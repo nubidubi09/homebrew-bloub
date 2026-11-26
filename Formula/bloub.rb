@@ -14,7 +14,9 @@ class Bloub < Formula
            "CODE_SIGN_IDENTITY=-",
            "-clonedSourcePackagesDirPath", "#{buildpath}/packages",
            "-IDEPackageSupportDisableManifestSandbox=YES",
-           "-IDEPackageSupportDisablePluginExecutionSandbox=YES"
+           "-IDEPackageSupportDisablePluginExecutionSandbox=YES",
+           # Swift's macros (@State, @Observable) start their own sandbox, which Homebrew's sandbox does not allow.
+           "OTHER_SWIFT_FLAGS=$(inherited) -disable-sandbox"
     prefix.install "#{buildpath}/dd/Build/Products/Release/Assistant.app" => "Bloub.app"
     (bin/"bloub").write <<~SH
       #!/bin/sh
