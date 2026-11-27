@@ -17,7 +17,7 @@ class Bloub < Formula
            "-IDEPackageSupportDisablePluginExecutionSandbox=YES",
            # Swift's macros (@State, @Observable) start their own sandbox, which Homebrew's sandbox does not allow.
            "OTHER_SWIFT_FLAGS=$(inherited) -disable-sandbox"
-    prefix.install "#{buildpath}/dd/Build/Products/Release/Assistant.app" => "Bloub.app"
+    prefix.install "#{buildpath}/dd/Build/Products/Release/Bloub.app" => "Bloub.app"
     (bin/"bloub").write <<~SH
       #!/bin/sh
       exec open "#{opt_prefix}/Bloub.app"
